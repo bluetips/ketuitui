@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "高清打印素材",
+    "usingComponents": {
+        "tki-qrcode": "/components/tki-qrcode/tki-qrcode"
+    }
+}

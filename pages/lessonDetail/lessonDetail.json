@@ -1,0 +1,9 @@
+{
+    "navigationBarTitleText": "课程详情",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "usingComponents": {
+        "utag": "/components/uni-tag/uni-tag",
+        "bottom-bar": "/components/detailTabBar",
+        "tki-qrcode": "/components/tki-qrcode/tki-qrcode"
+    }
+}

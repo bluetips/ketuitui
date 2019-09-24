@@ -1,0 +1,13 @@
+<view bindtap="__e" class="{{['uni-card',isFull?'uni-card--full':'']}}" data-event-opts="{{[ [ 'tap',[ [ 'onClick',['$event'] ] ] ] ]}}">
+    <view class="uni-card__header" wx:if="{{title}}">
+        <view class="uni-card__header-extra-img-view" wx:if="{{thumbnail}}">
+            <image class="uni-card__header-extra-img" src="{{thumbnail}}"></image>
+        </view>
+        <view class="uni-card__header-title-text">{{title}}</view>
+        <view class="uni-card__header-extra-text" wx:if="{{extra}}">{{extra}}</view>
+    </view>
+    <view class="uni-card__content uni-card__content--pd">
+        <slot></slot>
+    </view>
+    <view class="uni-card__footer" wx:if="{{note}}">{{note}}</view>
+</view>

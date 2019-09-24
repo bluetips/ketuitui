@@ -1,0 +1,104 @@
+@charset "UTF-8";
+
+.task_detail {
+    padding-bottom: 120rpx;
+}
+
+.task_detail .bottom_button {
+    position: fixed;
+    bottom: 20rpx;
+    left: 20rpx;
+    right: 20rpx;
+}
+
+.task_detail .bottom_button button icon {
+    margin-right: 8rpx;
+    font-size: 36rpx;
+}
+
+.task_detail .top_list {
+    padding: 10rpx 50rpx;
+}
+
+.task_detail .top_list .item {
+    margin: 20rpx 0;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.task_detail .top_list .item icon {
+    -webkit-box-flex: 0.15;
+    flex: 0.15;
+    color: orange;
+    font-size: 36rpx;
+}
+
+.task_detail .top_list .item text.name {
+    -webkit-box-flex: 0.5;
+    flex: 0.5;
+}
+
+.task_detail .top_list .item text.value {
+    -webkit-box-flex: 0.35;
+    flex: 0.35;
+}
+
+.task_detail .member_lists {
+    background-color: rgba(0,0,0,0.6);
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+}
+
+.task_detail .product {
+    padding: 15rpx 20rpx;
+    box-sizing: border-box;
+    background-color: #fff;
+    border-radius: 8rpx;
+    box-shadow: 0 0 8rpx #e0e0e0;
+    margin-bottom: 20rpx;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.task_detail .product image {
+    width: 200rpx;
+    margin-right: 16rpx;
+}
+
+.task_detail .product icon {
+    width: 40rpx;
+    margin-top: 28rpx;
+    margin-left: 16rpx;
+    color: #cccccc;
+}
+
+.title {
+    font-size: 32rpx;
+    padding: 10rpx 16rpx;
+    margin-bottom: 20rpx;
+}
+
+.title rich-text {
+    display: inline-block;
+    margin-right: 8rpx;
+}
+
+.title .desc {
+    padding-top: 12rpx;
+    color: #999;
+    font-size: 28rpx;
+}
+
+.content {
+    font-size: 28rpx;
+    padding: 30rpx 40rpx;
+    line-height: 48rpx;
+}

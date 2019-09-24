@@ -1,0 +1,29 @@
+<view class="uni-navbar">
+    <view class="{{['uni-navbar__content',fixed?'uni-navbar--fixed':'',border?'uni-navbar--shadow':'',border?'uni-navbar--border':'']}}" style="{{'background-color:'+backgroundColor+';'}}">
+        <uni-status-bar bind:__l="__l" vueId="1" wx:if="{{statusBar}}"></uni-status-bar>
+        <view class="uni-navbar__header" style="{{'color:'+color+';'}}">
+            <view bindtap="__e" class="uni-navbar__header-btns" data-event-opts="{{[ [ 'tap',[ [ 'onClickLeft',['$event'] ] ] ] ]}}">
+                <view wx:if="{{leftIcon.length}}">
+                    <uni-icon bind:__l="__l" color="{{color}}" size="24" type="{{leftIcon}}" vueId="2"></uni-icon>
+                </view>
+                <view class="{{['uni-navbar-btn-text',!leftIcon.length?'uni-navbar-btn-icon-left':'']}}" wx:if="{{leftText.length}}">{{leftText}}</view>
+                <slot name="left"></slot>
+            </view>
+            <view class="uni-navbar__header-container">
+                <view class="uni-navbar__header-container-inner" wx:if="{{title.length}}">{{title}}</view>
+                <slot></slot>
+            </view>
+            <view bindtap="__e" class="uni-navbar__header-btns" data-event-opts="{{[ [ 'tap',[ [ 'onClickRight',['$event'] ] ] ] ]}}">
+                <view wx:if="{{rightIcon.length}}">
+                    <uni-icon bind:__l="__l" color="{{color}}" size="24" type="{{rightIcon}}" vueId="3"></uni-icon>
+                </view>
+                <view class="uni-navbar-btn-text" wx:if="{{rightText.length&&!rightIcon.length}}">{{rightText}}</view>
+                <slot name="right"></slot>
+            </view>
+        </view>
+    </view>
+    <view class="uni-navbar__placeholder" wx:if="{{fixed}}">
+        <uni-status-bar bind:__l="__l" vueId="4" wx:if="{{statusBar}}"></uni-status-bar>
+        <view class="uni-navbar__placeholder-view"></view>
+    </view>
+</view>

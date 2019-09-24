@@ -1,0 +1,33 @@
+<view class="earn">
+    <uni-segmented-control activeColor="#ff393b" bind:__l="__l" bind:clickItem="__e" current="{{current}}" data-event-opts="{{[ [ '^clickItem',[ ['onClickItem'] ] ] ]}}" styleType="button" values="{{items}}" vueId="1"></uni-segmented-control>
+    <view style="margin-top:15rpx;">
+        <view hidden="{{!(current==0)}}">
+            <view class="detail-earn-show">
+                <view class="detail-earn-show-content">
+                    <view wx:if="{{commissionList}}">
+                        <view wx:for="{{commissionList}}" wx:key="index">
+                            <view class="commission-block">
+                                <image class="c-image" mode="scaleToFill" src="{{item.share_img}}"></image>
+                                <view class="c-text">
+                                    <view class="c-text-title">{{item.store_name}}</view>
+                                    <view class="c-text-time">{{item.add_time+' 购买'}}</view>
+                                    <view class="c-money">{{'¥'+item.pay_price}}</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view wx:if="{{commissionList.length==0}}">
+                        <image class="none-data-image" mode="widthFix" src="../../static/image/noclist.png"></image>
+                        <view class="none-data-text">该粉丝无消费记录~</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view hidden="{{!(current==1)}}">
+            <view>
+                <image class="none-data-image" mode="widthFix" src="../../static/image/noclist.png"></image>
+                <view class="none-data-text">暂不支持查看下线收益明细</view>
+            </view>
+        </view>
+    </view>
+</view>

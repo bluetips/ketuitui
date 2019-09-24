@@ -1,0 +1,41 @@
+<view class="content">
+    <j-swiper bind:__l="__l" images="{{banner}}" vueId="1" wx:if="{{banner}}"></j-swiper>
+    <view class="btn-items">
+        <uni-segmented-control activeColor="#ff393b" bind:__l="__l" bind:clickItem="__e" current="{{activeItem}}" data-event-opts="{{[ [ '^clickItem',[ ['onClickItem'] ] ] ]}}" styleType="button" values="{{items}}" vueId="2"></uni-segmented-control>
+    </view>
+    <view class="tab-lists" hidden="{{!(activeItem==0)}}">
+        <tab-list bind:__l="__l" bind:click="__e" current="{{activeTabIndex}}" data-event-opts="{{[ [ '^click',[ ['tabClick'] ] ] ]}}" fixed="{{tabFixStatus}}" items="{{tabList}}" vueId="3"></tab-list>
+    </view>
+    <view class="{{['tab-view',tabFixStatus?'list-margin':'']}}">
+        <navigator class="product-lists" hoverClass="none" url="{{'/pages/lessonDetail/lessonDetail?id='+item.id}}" wx:for="{{list}}" wx:key="id">
+            <view class="product-img">
+                <image src="{{item.cover}}"></image>
+            </view>
+            <view class="product-detail">
+                <view class="product-detail-title">{{item.title}}</view>
+                <utag circle inverted bind:__l="__l" class="product-detail-tag" text="{{tag}}" type="default" vueId="{{'4-'+index+'-'+tagIndex}}" wx:for="{{item.label_name}}" wx:for-index="tagIndex" wx:for-item="tag" wx:key="tagIndex"></utag>
+                <view class="product-detail-price" hidden="{{!(platform!='ios'||!ischeck)}}">
+                    <view class="product-detail-yuan">¥</view>
+                    <view class="product-detail-num">{{''+item.price}}</view>
+                    <view class="product-detail-price-earn">
+                        <view class="product-detail-price-earn-text">赚</view>
+                        <view class="product-detail-price-earn-num">{{item.make}}</view>
+                    </view>
+                </view>
+                <view class="product-detail-sale">{{'已售'+item.sales+'份'}}</view>
+                <view class="product-detail-recommend">推荐好课</view>
+            </view>
+        </navigator>
+        <view wx:if="{{list.length==0}}">
+            <image class="none-data-image" mode="widthFix" src="../../static/image/noclist.png"></image>
+            <view class="none-data-text">数据加载中...</view>
+        </view>
+    </view>
+    <view class="copyright">Copyright @2019<view class="_br"></view>广州栩栩如生信息科技有限公司　版权所有</view>
+    <view class="win" wx:if="{{window}}">
+        <view>
+            <image bindtap="__e" class="winPic" data-event-opts="{{[ [ 'tap',[ ['gotoUrl'] ] ] ]}}" mode="widthFix" src="{{window.pic}}"></image>
+        </view>
+        <icon bindtap="__e" class="iconfont" data-event-opts="{{[ [ 'tap',[ [ 'e0',['$event'] ] ] ] ]}}">×</icon>
+    </view>
+</view>

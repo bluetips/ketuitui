@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+.fix-top {
+    position: fixed;
+    top: 0;
+}
+
+.list {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    white-space: nowrap;
+    background: #fff;
+    border-bottom: 2rpx solid #F7F7F7;
+}
+
+.list view {
+    border-bottom: 2rpx solid #F7F7F7;
+    background-color: #FFFFFF;
+    padding: 0 25rpx;
+}
+
+.list .active {
+    position: relative;
+    color: #FF3938;
+}
+
+.list .active::after {
+    content: ' ';
+    position: absolute;
+    height: 4rpx;
+    width: 40rpx;
+    bottom: 0;
+    left: 50%;
+    margin-left: -20rpx;
+    background-color: #FF3938;
+}

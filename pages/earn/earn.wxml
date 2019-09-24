@@ -1,0 +1,136 @@
+<view class="earn">
+    <uni-segmented-control activeColor="#ff393b" bind:__l="__l" bind:clickItem="__e" current="{{current}}" data-event-opts="{{[ [ '^clickItem',[ ['onClickItem'] ] ] ]}}" styleType="button" values="{{items}}" vueId="1"></uni-segmented-control>
+    <view style="margin-top:15rpx;">
+        <view hidden="{{!(current==0)}}" wx:if="{{earning}}">
+            <view class="detail-earn">
+                <view class="detail-earn-two">
+                    <view class="detail-earn-two-first">
+                        <view class="detail-earn-title-text">今日预估收益 (元)</view>
+                        <view class="detail-earn-price">{{earning.today_number}}</view>
+                    </view>
+                    <view>
+                        <view class="detail-earn-title-text">昨日推广收益 (元)</view>
+                        <view class="detail-earn-price">{{earning.yesterday_number}}</view>
+                    </view>
+                </view>
+                <view class="detail-earn-two">
+                    <view class="detail-earn-two-first">
+                        <view class="detail-earn-title-text" style="{{earning.other_style_1}}">{{earning.other_title}}</view>
+                        <view class="detail-earn-price" style="{{earning.other_style_2}}">{{earning.other_money}}</view>
+                    </view>
+                    <view>
+                        <view class="detail-earn-title-text">累计获得佣金 (元)</view>
+                        <view class="detail-earn-price">{{earning.allNumber}}</view>
+                    </view>
+                </view>
+                <view bindtap="__e" class="detail-earn-cal-explain" data-event-opts="{{[ [ 'tap',[ [ 'e0',['$event'] ] ] ] ]}}">
+                    <text class="iconfont self-icon1"></text>收入计算说明</view>
+            </view>
+            <view class="detail-earn-show">
+                <view class="{{['detail-earn-show-list detail-earn-show-list1',tabFixStatus?'fix':'']}}">
+                    <view bindtap="__e" class="{{['detail-earn-show-item',index==activeItemIndex?'list-item-active':'',item.cls?'c_red':'']}}" data-event-opts="{{[ [ 'tap',[ [ 'selectItem',[index] ] ] ] ]}}" wx:for="{{showList}}" wx:key="index">{{item.label}}</view>
+                </view>
+                <view class="{{['detail-earn-show-content',tabFixStatus?'fix-margin':'']}}">
+                    <view class="tips" wx:if="{{activeItemIndex==4}}">注：无效收益主要是指由于粉丝退款等行为导致佣金失效</view>
+                    <view class="tips" wx:if="{{activeItemIndex==1}}">
+                        <view>失联指粉丝购买课程后，没有关注“小舵手学堂”公众号，以致无法接收到“拼团进度”、“上课提醒”、“优质课程推荐”等信息。</view>
+                        <view style="margin-top:10px;color:#007AFF;">提示：提醒粉丝关注“小舵手学堂”公众号，有助于提升粉丝复购率。</view>
+                    </view>
+                    <view wx:if="{{commissionList}}">
+                        <view wx:for="{{commissionList}}" wx:key="index">
+                            <navigator class="commission-block" url="{{'/pages/earn/earnDetail/earnDetail?id='+item.id}}">
+                                <image class="c-image" mode="scaleToFill" src="{{item.share_img}}"></image>
+                                <view class="c-text c-text-2">
+                                    <view class="c-text-title">{{item.store_name}}</view>
+                                    <view class="c-text-mark">{{item.mark}}</view>
+                                    <view class="c-text-time">{{item.add_time}}</view>
+                                </view>
+                                <view class="c-right">
+                                    <view class="c-status">{{item.status}}</view>
+                                    <view class="c-money">{{'¥'+item.number}}</view>
+                                </view>
+                            </navigator>
+                        </view>
+                    </view>
+                    <view style="text-align:center;padding:30rpx 0;" wx:if="{{commissionList.length==0}}">
+                        <image mode="widthFix" src="../../static/image/noclist.png" style="width:350rpx;"></image>
+                        <view style="font-size:30rpx;color:#999999;">暂无订单记录~</view>
+                    </view>
+                </view>
+            </view>
+            <view class="detail-earn-rules" hidden="{{!showRule}}">
+                <view class="detail-earn-rules-block">
+                    <view class="detail-earn-rules-block-title">会员收益规则</view>
+                    <scroll-view class="detail-earn-rules-block-content" scrollY="true">
+                        <view class="detail-earn-rules-block-content-text">
+                            <view>1. 新用户通过您的链接或者专属海报，授权或者关注公众号后，会成为您的一级学员。</view>
+                            <view>2. 一级学员邀请的学员会变成您的二级学员。</view>
+                            <view>3. 所有邀请学员在推广有效期内购买或者参与了指定课程的拼团，都会根据该课程的一级和二级佣金比例，奖励一笔佣金。</view>
+                            <view>4. 试用会员的返佣与普通粉丝一致，转正后按正式会员的返佣比例，补发试用期间的佣金差额。</view>
+                            <view>5. 所有一级学员和二级学员，推广长期永久有效。</view>
+                            <view>6. 达到20元，可以提现，申请提现后，3个工作日内处理完，提现次数不限制。</view>
+                            <view>7. 当前提现仅支持支付宝提现。</view>
+                        </view>
+                    </scroll-view>
+                    <view bindtap="__e" class="detail-earn-rules-block-close" data-event-opts="{{[ [ 'tap',[ [ 'e1',['$event'] ] ] ] ]}}">我知道了</view>
+                </view>
+            </view>
+        </view>
+        <view hidden="{{!(current==1)}}">
+            <view class="detail-earn">
+                <view style="overflow:hidden;">
+                    <view class="detail-earn-title-text" style="float:left;">今日新增粉丝 (元)</view>
+                </view>
+                <view>
+                    <view class="day-estimate">{{earning.today_fans||0}}</view>
+                </view>
+                <view class="detail-earn-two">
+                    <view class="detail-earn-two-first">
+                        <view class="detail-earn-title-text">昨日新增粉丝</view>
+                        <view class="detail-earn-price">{{earning.yesterday_fans||0}}</view>
+                    </view>
+                    <view>
+                        <view class="detail-earn-title-text">粉丝总数（一级/二级）</view>
+                        <view class="detail-earn-price">{{(fansFirst||0)+'/'+(fansSecond||0)}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="detail-earn-show">
+                <view class="{{['detail-earn-show-list detail-earn-show-list2',tabFixStatusFans?'fix':'']}}">
+                    <view bindtap="__e" class="{{['detail-earn-show-item',index==activeItemIndexFans?'list-item-active':'']}}" data-event-opts="{{[ [ 'tap',[ [ 'selectItemFans',[index] ] ] ] ]}}" wx:for="{{showListFans}}" wx:key="index">{{item.label}}</view>
+                </view>
+                <view class="{{['detail-earn-show-content',tabFixStatusFans?'fix-margin':'']}}">
+                    <view class="searchBar">
+                        <input bindinput="__e" data-event-opts="{{[ [ 'input',[ [ '__set_model',[ '','keyword','$event',[] ] ] ] ] ]}}" maxlength="50" placeholder="输入粉丝昵称或者手机号" value="{{keyword}}"></input>
+                        <button bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'search',['$event'] ] ] ] ]}}" size="mini" type="warn">搜索</button>
+                        <button bindtap="__e" class="empty" data-event-opts="{{[ [ 'tap',[ [ 'e2',['$event'] ] ] ] ]}}" hidden="{{!keyword}}" size="mini" type="default">清空</button>
+                    </view>
+                    <view wx:if="{{fansList}}">
+                        <view wx:for="{{fansList}}" wx:key="index">
+                            <view class="commission-block">
+                                <image class="u-image" mode="scaleToFill" src="{{item.avatar}}"></image>
+                                <view class="c-text">
+                                    <view class="c-text-title">{{item.nickname}}</view>
+                                    <view class="c-text-mark">{{'粉丝数: '+item.promote_user_first}}</view>
+                                    <view class="c-text-time">{{item.add_time}}</view>
+                                </view>
+                                <view class="c-right">
+                                    <view>
+                                        <button bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'copyNickname',['$0'],[ [ ['fansList','',index,'nickname'] ] ] ] ] ] ]}}" plain="true" size="mini" type="default">复制昵称</button>
+                                    </view>
+                                    <view style="margin-top:15px;">
+                                        <button bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'viewUserDetail',['$0'],[ [ ['fansList','',index,'uid'] ] ] ] ] ] ]}}" plain="true" size="mini" type="primary">消费情况</button>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view wx:if="{{fansList.length==0}}">
+                        <image class="none-data-image" mode="widthFix" src="../../static/image/noclist.png"></image>
+                        <view class="none-data-text">暂无数据~</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

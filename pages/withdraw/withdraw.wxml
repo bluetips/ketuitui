@@ -1,0 +1,47 @@
+<view class="information">
+    <uni-segmented-control activeColor="#ff393b" bind:__l="__l" bind:clickItem="__e" current="{{current}}" data-event-opts="{{[ [ '^clickItem',[ ['onClickItem'] ] ] ]}}" styleType="button" values="{{items}}" vueId="1"></uni-segmented-control>
+    <block wx:if="{{candraw}}">
+        <view class="information-li flex" style="margin-top:30rpx;">
+            <label>提现到：</label>
+            <radio-group bindchange="__e" data-event-opts="{{[ [ 'change',[ [ 'radioChange',['$event'] ] ] ] ]}}">
+                <label style="margin-right:15px;">
+                    <radio checked="{{extract_type=='wx'?true:false}}" value="wx"></radio>微信零钱<text style="color:#ff0000;font-size:12px;">(速度快)</text>
+                </label>
+                <label>
+                    <radio checked="{{extract_type=='alipay'?true:false}}" value="alipay"></radio>支付宝</label>
+            </radio-group>
+        </view>
+        <view class="information-li flex">
+            <label>认证姓名：</label>
+            <input bindinput="__e" data-event-opts="{{[ [ 'input',[ [ '__set_model',[ '','real_name','$event',[] ] ] ] ] ]}}" name="name" placeholder="请输入姓名" placeholderClass="placeholder" type="text" value="{{real_name}}"></input>
+        </view>
+        <view class="information-li flex" wx:if="{{extract_type=='alipay'}}">
+            <label>支付宝账号：</label>
+            <input bindinput="__e" data-event-opts="{{[ [ 'input',[ [ '__set_model',[ '','alipay_code','$event',[] ] ] ] ] ]}}" name="account" placeholder="请输入支付宝账号" placeholderClass="placeholder" type="text" value="{{alipay_code}}"></input>
+        </view>
+        <view class="information-li flex">
+            <label>提现金额：</label>
+            <input bindinput="__e" data-event-opts="{{[ [ 'input',[ [ '__set_model',[ '','nowmoney','$event',[] ] ],[ 'oninput',['$event'] ] ] ] ]}}" placeholder="{{minmoney_tips}}" placeholderClass="placeholder" type="digit" value="{{nowmoney}}"></input>
+        </view>
+        <view class="moneyh">
+            <image class="jine" src="../../static/image/iconsa.png"></image>余额<text style="font-weight:bold;">{{'￥'+now_money}}</text>
+        </view>
+        <form bindsubmit="__e" data-event-opts="{{[ [ 'submit',[ [ 'withdraws',['$event'] ] ] ] ]}}" reportSubmit="true">
+            <button class="getmoney" formType="submit">提现</button>
+        </form>
+    </block>
+    <block wx:else>
+        <view style="font-size:16px;color:#ff0000;padding:15px 25px;">{{''+drawTips+''}}</view>
+        <navigator openType="switchTab" url="/pages/my/my">
+            <button style="margin:15px 25px;" type="primary">返回个人中心</button>
+        </navigator>
+    </block>
+    <view class="msg">
+        <view style="font-size:28rpx;">提现须知：</view>
+        <view style="color:#ff0000;">{{'1. 单笔提现金额最低'+minmoney+'元，最高'+maxmoney+'元；每日累计提现不能超过5000元；'}}</view>
+        <view style="color:#ff0000;">2. 微信零钱提现，需要提供与当前微信号实名认证一致的姓名，否则无法到账；</view>
+        <view style="color:#ff0000;">3. 使用支付宝提现，请确保您的支付宝已经设置可通过搜索查询；</view>
+        <view>4. 周末及法定节假日仅支持微信零钱提现；</view>
+        <view>5. 微信零钱提现，工作日平均4小时内到账，其余时间平均48小时内到账；支付宝仅在工作日会处理提现，1-3个工作日内到账；</view>
+    </view>
+</view>

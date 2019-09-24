@@ -1,0 +1,10 @@
+<view class="detail-tab-bar">
+    <view bindtap="__e" class="product-detail-recommend detail-tab-bar-self" data-event-opts="{{[ [ 'tap',[ [ 'click',['$event'] ] ] ] ]}}">
+        <view style="height:40rpx;font-size:35rpx;">推荐好课</view>
+        <view style="font-size:25rpx;">{{'每单赚¥'+price}}</view>
+    </view>
+    <view bindtap="__e" class="{{['store_prod',favored?'favored':'']}}" data-event-opts="{{[ [ 'tap',[ [ 'favor',['$event'] ] ] ] ]}}">
+        <icon class="iconfont"></icon>
+        <view>{{favored?'已收藏':'收藏'}}</view>
+    </view>
+</view>

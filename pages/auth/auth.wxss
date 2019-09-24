@@ -1,0 +1,28 @@
+.logo {
+    display: block;
+    width: 320rpx;
+    height: 167rpx;
+    margin: 230rpx auto;
+}
+
+page {
+    background: #fff;
+}
+
+.logopage {
+}
+
+.login-btn {
+    width: 500rpx;
+    height: 80rpx;
+    background: -webkit-gradient(linear,left top,left bottom,from(#FF3838),to(#ff4e4e))!important;
+    background: -o-linear-gradient(#FF3838,#ff4e4e)!important;
+    background: linear-gradient(#FF3838,#ff4e4e)!important;
+    border-radius: 40rpx;
+    font-size: 28rpx!important;
+    color: #fff!important;
+    text-align: center;
+    line-height: 80rpx;
+    margin-top: 300rpx;
+    border: none;
+}

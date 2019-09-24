@@ -1,0 +1,69 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/hdPrinting/hdPrinting",
+    "pages/lessonPoster/lessonPoster",
+    "pages/publicAccount/publicAccount",
+    "pages/socialMediaShare/socialMediaShare",
+    "pages/invite/invite",
+    "pages/invite/my",
+    "pages/withdrawRecord/withdrawRecord",
+    "pages/withdraw/withdraw",
+    "pages/earn/earn",
+    "pages/lessonDetail/lessonDetail",
+    "pages/auth/auth",
+    "pages/my/my",
+    "pages/my/myDetail/myDetail",
+    "pages/my/myDetail/bind/bind",
+    "pages/earn/earnDetail/earnDetail",
+    "pages/my/vip",
+    "pages/my/qrcode",
+    "pages/buyRecord/buyRecord",
+    "pages/highprofit/highprofit",
+    "pages/webview/webview",
+    "pages/my/task/task",
+    "pages/my/task/detail"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "",
+    "navigationBarBackgroundColor": "#fff",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#333",
+    "selectedColor": "#ff393b",
+    "borderStyle": "black",
+    "backgroundColor": "#FFFFFF",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "static/image/1.png",
+        "selectedIconPath": "static/image/2.png"
+      },
+      {
+        "pagePath": "pages/my/task/task",
+        "text": "活动",
+        "iconPath": "static/image/7.png",
+        "selectedIconPath": "static/image/8.png"
+      },
+      {
+        "pagePath": "pages/earn/earn",
+        "text": "收益/粉丝",
+        "iconPath": "static/image/3.png",
+        "selectedIconPath": "static/image/4.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "static/image/5.png",
+        "selectedIconPath": "static/image/6.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000
+  },
+  "sitemapLocation": "sitemap81.json"
+}

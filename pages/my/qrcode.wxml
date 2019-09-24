@@ -1,0 +1,18 @@
+<view style="text-align:center;">
+    <view class="qrimg">
+        <tki-qrcode bind:__l="__l" bind:result="__e" class="vue-ref" data-event-opts="{{[ [ '^result',[ ['qrR'] ] ] ]}}" data-ref="qrcode" loadMake="{{loadMake}}" lv="{{lv}}" onval="{{onval}}" size="{{1000}}" unit="{{unit}}" val="{{qrcodeUrl}}" vueId="1" wx:if="{{qrcodeUrl}}"></tki-qrcode>
+    </view>
+    <image class="preimage" src="{{savedImgUrl}}" wx:if="{{savedImgUrl}}"></image>
+    <view class="cont">
+        <view style="color:#333333;">二维码</view>
+        <view>建议扫描距离一米</view>
+    </view>
+    <view bindtap="__e" class="savepimage" data-event-opts="{{[ [ 'tap',[ [ 'saveImageToPhoto',['$event'] ] ] ] ]}}" wx:if="{{savedImgUrl}}">下载专属二维码</view>
+    <view class="detail-rule" wx:if="{{savedImgUrl}}">
+        <view>
+            <view class="detail-rule-title">使用帮助</view>
+        </view>
+        <text class="detail-rule-text">1.在发朋友圈、微博等社交平台是,附上文案、链接和图片
+			2.二维码和实拍的图片组合能提高购买率</text>
+    </view>
+</view>

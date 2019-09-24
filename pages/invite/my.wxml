@@ -1,0 +1,34 @@
+<view class="invitepage">
+    <view class="invitetop">
+        <view class="inviteper">
+            <view class="itemper" style="margin-right:110rpx;">
+                <view class="classtype">一级学员</view>
+                <view class="numper">{{first}}</view>
+            </view>
+            <view class="itemper">
+                <view class="classtype">二级学员</view>
+                <view class="numper">{{second}}</view>
+            </view>
+        </view>
+        <view class="invitedesc">注：由于反作弊算法处理需要一定时间，数据有10-30分钟的延迟！</view>
+    </view>
+    <view class="invitebottom">
+        <text class="line"></text>
+        <view>
+            <view class="invite-item" wx:for="{{SprendList}}" wx:key="index">
+                <image class="uavator" src="{{item.avatar}}"></image>
+                <view class="middle">
+                    <view class="inname">{{item.nickname}}</view>
+                    <view class="intime">{{'邀请时间：'+item.add_time}}</view>
+                </view>
+                <view class="right">{{'TA邀请了'+item.promote_user_first+'人'}}</view>
+            </view>
+            <view hidden="{{!max}}" style="text-align:center;margin-top:20rpx;font-size:30rpx;">--数据已经加载完成--</view>
+            <view class="loading flex"></view>
+            <view class="nolist" wx:if="{{SprendList.length==0}}">
+                <image src="../../static/image/noclist.png"></image>
+                <view style="margin-top:20rpx;color:#999;">暂无记录</view>
+            </view>
+        </view>
+    </view>
+</view>

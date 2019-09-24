@@ -1,0 +1,94 @@
+@charset "UTF-8";
+
+.self-tag-style {
+    height: 30rpx!important;
+    padding: 0 10rpx!important;
+    margin: 0 10rpx 0 0;
+    line-height: 26rpx!important;
+    text-align: center;
+    font-size: 20rpx!important;
+    border-color: #CCCCCC!important;
+    color: #CCCCCC!important;
+}
+
+.uni-tag {
+    box-sizing: border-box;
+    padding: 0px 32rpx;
+    height: 60rpx;
+    line-height: calc(60rpx - 2px);
+    font-size: 28rpx;
+    display: inline-block;
+    color: #333;
+    border-radius: 6rpx;
+    background-color: #f8f8f8;
+    border: 1px solid #f8f8f8;
+}
+
+.uni-tag--circle {
+    border-radius: 30rpx;
+}
+
+.uni-tag--disabled {
+    opacity: 0.5;
+}
+
+.uni-tag--small {
+    height: 40rpx;
+    padding: 0px 16rpx;
+    line-height: calc(40rpx - 2px);
+    font-size: 24rpx;
+}
+
+.uni-tag--primary {
+    color: #fff;
+    background-color: #007aff;
+    border: 1px solid #007aff;
+}
+
+.uni-tag--primary.uni-tag--inverted {
+    color: #007aff;
+    background-color: #ffffff;
+    border: 1px solid #007aff;
+}
+
+.uni-tag--success {
+    color: #fff;
+    background-color: #4cd964;
+    border: 1px solid #4cd964;
+}
+
+.uni-tag--success.uni-tag--inverted {
+    color: #4cd964;
+    background-color: #ffffff;
+    border: 1px solid #4cd964;
+}
+
+.uni-tag--warning {
+    color: #fff;
+    background-color: #f0ad4e;
+    border: 1px solid #f0ad4e;
+}
+
+.uni-tag--warning.uni-tag--inverted {
+    color: #f0ad4e;
+    background-color: #ffffff;
+    border: 1px solid #f0ad4e;
+}
+
+.uni-tag--error {
+    color: #fff;
+    background-color: #dd524d;
+    border: 1px solid #dd524d;
+}
+
+.uni-tag--error.uni-tag--inverted {
+    color: #dd524d;
+    background-color: #ffffff;
+    border: 1px solid #dd524d;
+}
+
+.uni-tag--inverted {
+    color: #333;
+    background-color: #ffffff;
+    border: 1px solid #f8f8f8;
+}

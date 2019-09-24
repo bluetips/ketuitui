@@ -1,0 +1,256 @@
+@charset "UTF-8";
+
+.shareinfo {
+    width: 90%;
+    line-height: 1.5;
+    margin: 0 auto 20rpx;
+    text-align: left;
+    position: relative;
+    height: 120rpx;
+    padding: 8rpx;
+    border: 2rpx solid #cccccc;
+    border-radius: 8rpx;
+}
+
+.shareinfo view {
+    overflow-y: auto;
+    height: 120rpx;
+}
+
+.shareinfo button {
+    position: absolute;
+    right: 4rpx;
+    bottom: 4rpx;
+    font-size: 20rpx;
+}
+
+.moretitle {
+    font-size: 32rpx;
+    font-weight: bold;
+    margin-bottom: 10rpx;
+}
+
+.conts {
+    color: #999;
+}
+
+.more-item {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-radius: 10rpx;
+    border: 1rpx solid #cccccc;
+    padding: 25rpx 30rpx;
+    margin: 50rpx;
+}
+
+.morecont {
+    -webkit-box-flex: 1;
+    flex: 1;
+    margin: 0 15rpx;
+}
+
+.rarrow {
+    width: 30rpx;
+    height: 30rpx;
+}
+
+.moreicon {
+    width: 80rpx;
+    height: 80rpx;
+}
+
+[v-clock] {
+    display: none;
+}
+
+@keyframes myfirst {
+    from {
+        transform: scale(0.8);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+@-webkit-keyframes myfirst {
+    from {
+        transform: scale(0.8);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+.mask {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background-color: rgba(0,0,0,0.65);
+}
+
+.itemcont {
+    text-align: center;
+    margin: 10rpx 50rpx 48rpx 50rpx;
+}
+
+.line {
+    display: inline-block;
+    height: 2rpx;
+    width: 80rpx;
+    background: #eee;
+    vertical-align: middle;
+    margin: 0 30rpx;
+}
+
+.sharebox {
+    position: fixed;
+    background: #fff;
+    width: 100%;
+    bottom: 0;
+    border-radius: 20rpx 20rpx 0 0;
+    z-index: 33;
+}
+
+.sharetitle {
+    text-align: center;
+    margin: 30rpx 0;
+    font-size: 30rpx;
+}
+
+.icont {
+    width: 68rpx;
+    height: 68rpx;
+    margin-bottom: 10rpx;
+}
+
+.sharecont {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.flex {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.qrimg {
+    position: absolute;
+    left: -9999px;
+    overflow: hidden;
+}
+
+.myCanvas {
+    width: 750px;
+    height: 1333px;
+    position: absolute;
+    left: -9999px;
+    overflow: hidden;
+    top: 0;
+}
+
+.savetitle {
+    color: #999;
+    margin-bottom: 20rpx;
+    text-align: center;
+}
+
+.preimage {
+    width: 365rpx;
+    height: 650rpx;
+    border-radius: 10rpx;
+    margin-top: 20rpx;
+    box-sizing: border-box;
+    margin-bottom: 20rpx;
+    box-shadow: 0rpx 0rpx 25rpx 3rpx #cccccc;
+    animation: myfirst .3s;
+}
+
+.posterbox {
+    position: relative;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    overflow: hidden;
+    font-size: 26rpx;
+    padding-bottom: 150rpx;
+}
+
+.flex {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.posttitle {
+    background: #fff;
+    color: #333;
+    padding: 0 20rpx;
+    text-align: center;
+}
+
+.active {
+    background: #FF3838!important;
+    color: #fff!important;
+}
+
+.tabnav {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    border-radius: 10rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    margin: 20rpx auto;
+    overflow: hidden;
+    border: 1rpx solid #eee;
+}
+
+.savepimage {
+    width: 100%;
+}
+
+.savepimage {
+    position: fixed;
+    bottom: 20rpx;
+    background: #FF3838;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    width: 80%;
+    color: #fff;
+    border-radius: 40rpx;
+    font-size: 32rpx;
+    transform: translate(-50%,0);
+    left: 50%;
+}

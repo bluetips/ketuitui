@@ -1,0 +1,63 @@
+<view class="vip">
+    <uni-card bind:__l="__l" extra="{{prodInfo.price}}" thumbnail="/static/image/vip1.png" title="{{prodInfo.store_name}}" vueId="1" vueSlots="{{['default']}}">
+        <view style="padding-bottom:160rpx;">
+            <rich-text nodes="{{prodInfo.description}}"></rich-text>
+        </view>
+    </uni-card>
+    <view style="position:fixed;bottom:0;left:0;width:100%;">
+        <view class="open" wx:if="{{!promote_level}}">
+            <view class="open-task">
+                <button bindtap="__e" data-event-opts="{{[ [ 'tap',[ ['goTaskDetail'] ] ] ]}}" style="margin-bottom:10rpx;" type="warn">申请试用会员</button>
+            </view>
+            <view class="open-buy" wx:if="{{prodInfo.logic==1||platform!='ios'}}">
+                <form bindsubmit="__e" data-event-opts="{{[ [ 'submit',[ [ 'buyVipXcx',['$event'] ] ] ] ]}}" reportSubmit="true">
+                    <button formType="submit" type="default">直接开通（¥199.00）</button>
+                </form>
+            </view>
+        </view>
+        <block wx:else>
+            <block wx:if="{{promote_level>0}}">
+                <view style="padding:0 25rpx 20rpx;" wx:if="{{promote_status>0}}">
+                    <button>您已是正式会员</button>
+                </view>
+                <view class="open" wx:else>
+                    <view class="open-task">
+                        <button>会员试用中</button>
+                    </view>
+                    <view class="open-buy" wx:if="{{prodInfo.logic==1||platform!='ios'}}">
+                        <form bindsubmit="__e" data-event-opts="{{[ [ 'submit',[ [ 'buyVipXcx',['$event'] ] ] ] ]}}" reportSubmit="true">
+                            <button formType="submit" type="primary">直接开通（¥199.00）</button>
+                        </form>
+                    </view>
+                </view>
+            </block>
+        </block>
+    </view>
+    <view bindtap="__e" class="mask" data-event-opts="{{[ [ 'tap',[ [ 'e0',['$event'] ] ] ] ]}}" hidden="{{!showBox}}"></view>
+    <view class="promote_sn_box" hidden="{{!showBox}}">
+        <view class="inner_box">
+            <block wx:if="{{step==1}}">
+                <input bindinput="__e" data-event-opts="{{[ [ 'input',[ [ '__set_model',[ '','promote_sn','$event',[] ] ] ] ] ]}}" name="name" placeholder="输入8位邀请码或者手机号码" placeholderClass="placeholder" type="text" value="{{promote_sn}}"></input>
+                <button bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'checkPromoteSn',['$event'] ] ] ] ]}}" disabled="{{binging}}" size="mini" type="warn">下一步</button>
+            </block>
+            <block wx:if="{{step==2}}">
+                <view class="inviter">
+                    <image src="{{inviter.avatar}}"></image>
+                    <view>{{inviter.nickname}}</view>
+                </view>
+                <button bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'bindPromoteSn',['$event'] ] ] ] ]}}" disabled="{{binging}}" size="mini" style="margin-top:20rpx;" type="warn">立即试用15天会员</button>
+            </block>
+            <view class="inviter" wx:if="{{step==3}}">
+                <image src="{{inviter.avatar}}"></image>
+                <view>{{inviter.nickname}}</view>
+            </view>
+            <view class="rule">
+                <view style="font-weight:bold;">会员试用规则：</view>
+                <view style="margin-top:10rpx;">1. 会员试用需要填邀请码或者邀请人手机号，邀请人必须具备邀请资格；</view>
+                <view>2. 试用期15天，在15天内完成业绩500元可转为正式会员；业绩未达成，降回普通粉丝；</view>
+                <view>3. 会员试用期间直接收益与普通粉丝一致，转正后一次性补发当前试用期间的佣金差额；</view>
+                <view>4. 本规则最终解释权归课推推平台所有；</view>
+            </view>
+        </view>
+    </view>
+</view>

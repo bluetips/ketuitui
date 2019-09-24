@@ -1,0 +1,137 @@
+<view class="{{['my',userInfo.promote_level==1?'theme_vip1':'']}}">
+    <view class="user">
+        <navigator hoverClass="none" url="/pages/my/myDetail/myDetail">
+            <view class="user-message">
+                <image class="user-message-avatar" src="{{userInfo.avatar}}"></image>
+                <view class="user-message-username">{{userInfo.nickname}}</view>
+                <text class="{{['iconfont',userInfo.promote_level==1?'vip1':'']}}"></text>
+                <view class="iconfont user-message-detail"></view>
+            </view>
+        </navigator>
+        <view class="user-wallet">
+            <view class="user-wallet-can">可提现 (元)</view>
+            <view style="position:relative;">
+                <view class="user-wallet-can-num">
+                    <text class="bigprice">{{bigprice}}</text>
+                    <text class="smallprice">{{'.'+smprice}}</text>
+                </view>
+                <view bindtap="__e" class="{{['user-wallet-takeDepoist ',userInfo.can_draw==1?'':'nouse']}}" data-event-opts="{{[ [ 'tap',[ [ 'gotowithdraw',['$event'] ] ] ] ]}}" data-isgo="{{userInfo.can_draw}}">{{userInfo.can_draw==1?'立即提现':'无法提现'}}</view>
+            </view>
+            <view class="user-wallet-hadTake" wx:if="{{userInfo.promote_level==1}}">
+                <view class="user-wallet-hadTake-text1">
+                    <text style="margin-right:10rpx;">确认中佣金 :</text>
+                    <text style="margin-right:10rpx;">{{userInfo.waitNumber+' 元'}}</text>
+                </view>
+                <view class="user-wallet-hadTake-text2">
+                    <text>{{userInfo.promote_time}}</text>
+                </view>
+            </view>
+            <view class="user-wallet-hadTake" wx:if="{{userInfo.promote_level==0}}">
+                <view class="user-wallet-hadTake-text1">
+                    <text style="margin-right:10rpx;">您还不是会员，无法享受高额返佣</text>
+                    <navigator style="display:inline-block;" url="/pages/my/vip">
+                        <utag bind:__l="__l" size="small" text="了解会员详情" vueId="1"></utag>
+                    </navigator>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="mine-item">
+        <view class="mine-title">
+            <view style="font-weight:bold;font-size:32rpx;">我参与的活动</view>
+        </view>
+        <block wx:if="{{tasks.length>0}}">
+            <view bindtap="__e" class="task" data-event-opts="{{[ [ 'tap',[ [ 'goToTaskDetail',['$0'],[ [ ['tasks','',index,'task_id'] ] ] ] ] ] ]}}" wx:for="{{tasks}}" wx:key="index">
+                <icon class="iconfont" style="font-size:72rpx;">
+                    <rich-text nodes="{{item.icon||'&#xe68b;'}}"></rich-text>
+                </icon>
+                <view class="taskcont">
+                    <view class="tasktitle">{{item.name}}</view>
+                    <view class="taskmoney">
+                        <block wx:if="{{item.status===0&&item.days>=0}}">还剩：<uni-countdown bind:__l="__l" borderColor="#d0d0d0" color="#666666" day="{{item.days}}" hour="{{item.hour}}" minute="{{item.minute}}" second="{{item.second}}" vueId="{{'2-'+index}}"></uni-countdown>
+                        </block>
+                    </view>
+                </view>
+                <view class="gettask" wx:if="{{item.status===0}}">
+                    <text>进行中</text>
+                    <view class="process" wx:if="{{item.buiness_process}}">{{item.buiness_process+'%'}}</view>
+                </view>
+                <block wx:else>
+                    <view class="gettask finish" wx:if="{{item.status===1}}">已完成</view>
+                </block>
+            </view>
+            <view class="task_center">
+                <icon class="iconfont"></icon>
+                <text bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'goTask',['$event'] ] ] ] ]}}" style="padding-left:10rpx;">活动中心 >></text>
+            </view>
+        </block>
+        <view class="notask" wx:else>
+            <view class="task_center">
+                <icon class="iconfont"></icon>
+                <text bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'goTask',['$event'] ] ] ] ]}}" style="padding-left:10rpx;">暂无活动，去活动中心 >></text>
+            </view>
+        </view>
+    </view>
+    <view class="items">
+        <view class="mine-title">
+            <view style="font-weight:bold;font-size:32rpx;">我的服务</view>
+        </view>
+        <view class="icondistrict">
+            <view class="item-icon">
+                <navigator hoverClass="none" url="/pages/my/vip">
+                    <view class="iconfont"></view>
+                    <view>会员</view>
+                </navigator>
+            </view>
+            <view class="item-icon">
+                <navigator hoverClass="none" url="/pages/withdraw/withdraw">
+                    <view class="iconfont"></view>
+                    <view>提现</view>
+                </navigator>
+            </view>
+            <view bindtap="__e" class="item-icon" data-event-opts="{{[ [ 'tap',[ [ 'e0',['$event'] ] ] ] ]}}" wx:if="{{userInfo.show_promote_sn}}">
+                <view class="iconfont"></view>
+                <view>填写邀请码</view>
+            </view>
+            <view class="item-icon">
+                <navigator hoverClass="none" url="/pages/my/qrcode">
+                    <view class="iconfont"></view>
+                    <view>二维码</view>
+                </navigator>
+            </view>
+            <view class="item-icon" openType="share">
+                <button class="contact_btn" openType="share">
+                    <view class="iconfont"></view>
+                    <view>邀请好友</view>
+                </button>
+            </view>
+        </view>
+    </view>
+    <view bindtap="__e" class="mask" data-event-opts="{{[ [ 'tap',[ [ 'e1',['$event'] ] ] ] ]}}" hidden="{{!showBox}}"></view>
+    <view class="promote_sn_box" hidden="{{!showBox}}">
+        <view class="inner_box">
+            <block wx:if="{{step==1}}">
+                <input bindinput="__e" data-event-opts="{{[ [ 'input',[ [ '__set_model',[ '','promote_sn','$event',[] ] ] ] ] ]}}" name="name" placeholder="输入8位邀请码或者手机号码" placeholderClass="placeholder" type="text" value="{{promote_sn}}"></input>
+                <button bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'checkPromoteSn',['$event'] ] ] ] ]}}" disabled="{{binging}}" size="mini" type="warn">下一步</button>
+            </block>
+            <block wx:if="{{step==2}}">
+                <view class="inviter">
+                    <image src="{{inviter.avatar}}"></image>
+                    <view>{{inviter.nickname}}</view>
+                </view>
+                <button bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'bindPromoteSn',['$event'] ] ] ] ]}}" disabled="{{binging}}" size="mini" style="margin-top:20rpx;" type="warn">立即绑定</button>
+            </block>
+            <view class="inviter" wx:if="{{step==3}}">
+                <image src="{{inviter.avatar}}"></image>
+                <view>{{inviter.nickname}}</view>
+            </view>
+            <view class="rule">
+                <view style="font-weight:bold;">邀请码规则：</view>
+                <view style="margin-top:10rpx;">1. 邀请码只有正式会员拥有（试用期会员无邀请码）</view>
+                <view>2. 正式会员输入邀请码后，与提供该邀请码的会员永久绑定上下级关系</view>
+                <view>3. 邀请码限量供应，请合理使用；</view>
+                <view>4. 本规则最终解释权归课推推平台所有；</view>
+            </view>
+        </view>
+    </view>
+</view>

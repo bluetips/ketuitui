@@ -1,0 +1,10 @@
+<view class="uni-countdown">
+    <view class="uni-countdown__number" style="{{'border-color:'+borderColor+';'+'color:'+color+';'+'background:'+backgroundColor+';'}}" wx:if="{{showDay}}">{{d}}</view>
+    <view class="uni-countdown__splitor" style="{{'color:'+splitorColor+';'}}" wx:if="{{showDay}}">天</view>
+    <view class="uni-countdown__number" style="{{'border-color:'+borderColor+';'+'color:'+color+';'+'background:'+backgroundColor+';'}}">{{h}}</view>
+    <view class="uni-countdown__splitor" style="{{'color:'+splitorColor+';'}}">{{showColon?':':'时'}}</view>
+    <view class="uni-countdown__number" style="{{'border-color:'+borderColor+';'+'color:'+color+';'+'background:'+backgroundColor+';'}}">{{i}}</view>
+    <view class="uni-countdown__splitor" style="{{'color:'+splitorColor+';'}}">{{showColon?':':'分'}}</view>
+    <view class="uni-countdown__number" style="{{'border-color:'+borderColor+';'+'color:'+color+';'+'background:'+backgroundColor+';'}}">{{s}}</view>
+    <view class="uni-countdown__splitor" style="{{'color:'+splitorColor+';'}}" wx:if="{{!showColon}}">秒</view>
+</view>

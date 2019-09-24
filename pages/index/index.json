@@ -1,0 +1,11 @@
+{
+    "navigationBarTitleText": "课推推-好课程,高佣金",
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+        "j-swiper": "/components/jing-swiper/jing-swiper",
+        "utag": "/components/uni-tag/uni-tag",
+        "accredit": "/components/accredit",
+        "uni-segmented-control": "/node-modules/@dcloudio/uni-ui/lib/uni-segmented-control/uni-segmented-control",
+        "tab-list": "/components/tab-list/index"
+    }
+}

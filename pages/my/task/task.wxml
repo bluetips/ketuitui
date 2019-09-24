@@ -1,0 +1,23 @@
+<view class="task_lists">
+    <uni-segmented-control activeColor="#ff393b" bind:__l="__l" bind:clickItem="__e" current="{{current}}" data-event-opts="{{[ [ '^clickItem',[ ['onClickItem'] ] ] ]}}" styleType="button" values="{{items}}" vueId="1"></uni-segmented-control>
+    <view bindtap="__e" class="item" data-event-opts="{{[ [ 'tap',[ [ 'goDetail',['$0'],[ [ ['lists','',index,'id'] ] ] ] ] ] ]}}" wx:for="{{lists}}" wx:key="index">
+        <view class="pic">
+            <image mode="widthFix" src="{{item.banner}}"></image>
+            <view class="title">
+                <view class="t">
+                    <icon class="iconfont">
+                        <rich-text nodes="{{item.icon}}"></rich-text>
+                    </icon>{{''+item.name+''}}</view>
+                <view class="take" wx:if="{{!item.timer&&item.person_take>0}}">{{''+item.person_take+' 人参与'}}</view>
+            </view>
+        </view>
+        <view class="desc" wx:if="{{item.timer}}">
+            <view>
+                <text wx:if="{{item.timer_type==2}}">还剩</text>
+                <uni-countdown bind:__l="__l" bind:timeup="__e" borderColor="#d0d0d0" color="#666666" data-event-opts="{{[ [ '^timeup',[ [ 'setend',[index] ] ] ] ]}}" day="{{item.timer.days}}" hour="{{item.timer.hour}}" minute="{{item.timer.minute}}" second="{{item.timer.second}}" vueId="{{'2-'+index}}"></uni-countdown>
+                <text wx:if="{{item.timer_type==1}}">后开始</text>
+            </view>
+            <view class="take" wx:if="{{item.person_take>0}}">{{''+item.person_take+' 人参与'}}</view>
+        </view>
+    </view>
+</view>

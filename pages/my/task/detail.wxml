@@ -1,0 +1,145 @@
+<view class="task_detail" wx:if="{{task}}">
+    <view wx:if="{{!hasPrevPage}}">
+        <uni-nav-bar bind:__l="__l" bind:clickLeft="__e" data-event-opts="{{[ [ '^clickLeft',[ ['goTaskCenter'] ] ] ]}}" leftIcon="back" leftText="返回" vueId="1"></uni-nav-bar>
+    </view>
+    <image mode="widthFix" src="{{task.banner}}" style="width:100%;" wx:if="{{task.banner}}"></image>
+    <view class="title">
+        <text class="iconfont">
+            <rich-text nodes="{{task.icon}}"></rich-text>
+        </text>{{task.name+''}}<view class="desc" wx:if="{{task.description}}">{{task.description}}</view>
+    </view>
+    <uni-segmented-control activeColor="#ff393b" bind:__l="__l" bind:clickItem="__e" current="{{current}}" data-event-opts="{{[ [ '^clickItem',[ ['onClickItem'] ] ] ]}}" styleType="button" values="{{items}}" vueId="2"></uni-segmented-control>
+    <view class="content">
+        <view hidden="{{!(current===0)}}">
+            <view style="font-weight:bold;">要求：</view>
+            <view>
+                <rich-text nodes="{{task.rule_content}}"></rich-text>
+            </view>
+            <view style="margin-top:10rpx;font-weight:bold;">奖励：</view>
+            <view>
+                <rich-text nodes="{{task.reward_content}}"></rich-text>
+            </view>
+            <view style="margin-top:10rpx;font-weight:bold;color:#FF0000;">本活动课程：</view>
+            <view style="margin-top:10rpx;" wx:if="{{task.rule&&task.rule.products.length>0}}">
+                <view bindtap="__e" class="product" data-event-opts="{{[ [ 'tap',[ [ 'goDetail',['$0'],[ [ ['task.rule.products','',index,'id'] ] ] ] ] ] ]}}" wx:for="{{task.rule.products}}" wx:key="index">
+                    <image mode="widthFix" src="{{item.share_img}}"></image>
+                    <view>{{''+item.title+''}}</view>
+                    <icon class="iconfont"></icon>
+                </view>
+            </view>
+            <block wx:else>所有课推推课程</block>
+        </view>
+        <view hidden="{{!(current===1)}}">
+            <view wx:if="{{record}}">
+                <view style="font-weight:bold;">活动进度：</view>
+                <view>
+                    <rich-text nodes="{{record.process}}"></rich-text>
+                </view>
+                <block wx:if="{{record.member}}"></block>
+                <view style="margin-top:10rpx;font-weight:bold;">活动明细：</view>
+                <block wx:if="{{record.record&&record.record.length>0}}">
+                    <view class="item" wx:for="{{record.record}}" wx:key="index">{{''+index+'、'+item.remark+''}}</view>
+                </block>
+                <view wx:else>
+                    <rich-text nodes="{{record.content}}"></rich-text>
+                </view>
+            </view>
+            <view wx:else>暂无明细</view>
+        </view>
+        <view hidden="{{!(current===2)}}">
+            <view class="top_list" wx:if="{{top}}">
+                <view>{{top.sort}}</view>
+                <view class="item" wx:for="{{top.lists}}" wx:key="index">
+                    <icon class="iconfont">
+                        <rich-text nodes="{{item.icon}}"></rich-text>
+                    </icon>
+                    <text class="name">{{item.name}}</text>
+                    <text class="value">{{item.value}}</text>
+                </view>
+            </view>
+            <view wx:else>暂无明细</view>
+        </view>
+    </view>
+    <view class="bottom_button">
+        <button style="font-size:28rpx;" type="default" wx:if="{{!task.is_start}}">
+            <icon class="iconfont"></icon>
+            <text>距活动开始，剩</text>
+            <uni-countdown bind:__l="__l" bind:timeup="__e" borderColor="#d0d0d0" color="#666666" data-event-opts="{{[ [ '^timeup',[ ['refresh'] ] ] ]}}" day="{{task.timer.days}}" hour="{{task.timer.hour}}" minute="{{task.timer.minute}}" second="{{task.timer.second}}" vueId="3"></uni-countdown>
+        </button>
+        <block wx:else>
+            <block wx:if="{{task.is_success}}">
+                <button type="default" wx:if="{{task.is_reward==1}}">
+                    <icon class="iconfont"></icon>
+                    <text>活动完成，奖励已经领取</text>
+                </button>
+                <button bindtap="__e" data-event-opts="{{[ [ 'tap',[ ['get_reward'] ] ] ]}}" type="primary" wx:else>
+                    <icon class="iconfont"></icon>
+                    <text>活动完成，领取奖励</text>
+                </button>
+            </block>
+            <block wx:else>
+                <block wx:if="{{task.is_fail}}">
+                    <button type="default" wx:if="{{task.is_reward==1}}">
+                        <icon class="iconfont"></icon>
+                        <text>未达标，已领阳光普照奖</text>
+                    </button>
+                    <button bindtap="__e" data-event-opts="{{[ [ 'tap',[ ['get_reward'] ] ] ]}}" type="warn" wx:else>
+                        <icon class="iconfont"></icon>
+                        <text>未达标，领取阳光普照奖</text>
+                    </button>
+                </block>
+                <block wx:else>
+                    <block wx:if="{{task.is_take}}">
+                        <block wx:if="{{task.is_end==0}}">
+                            <button style="font-size:28rpx;" type="default" wx:if="{{task.timer}}">
+                                <icon class="iconfont"></icon>
+                                <text>进行中，还剩</text>
+                                <uni-countdown bind:__l="__l" bind:timeup="__e" borderColor="#d0d0d0" color="#666666" data-event-opts="{{[ [ '^timeup',[ ['setend'] ] ] ]}}" day="{{task.timer.days}}" hour="{{task.timer.hour}}" minute="{{task.timer.minute}}" second="{{task.timer.second}}" vueId="4"></uni-countdown>
+                            </button>
+                            <button style="font-size:28rpx;" type="default" wx:else>
+                                <icon class="iconfont"></icon>
+                                <text>活动进行中</text>
+                            </button>
+                        </block>
+                        <button style="font-size:28rpx;" type="default" wx:else>
+                            <icon class="iconfont"></icon>
+                            <text>活动时间到，系统清算中</text>
+                        </button>
+                    </block>
+                    <block wx:else>
+                        <button bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'join_task',['$0'],['task.team_id'] ] ] ] ]}}" type="primary" wx:if="{{task.ename=='team_pk'&&task.team_id>0&&!task.is_join}}">
+                            <icon class="iconfont"></icon>
+                            <text>加入战队</text>
+                        </button>
+                        <block wx:else>
+                            <button type="default" wx:if="{{task.ename=='team_pk'&&task.is_join}}">
+                                <icon class="iconfont"></icon>
+                                <text>活动进行中</text>
+                            </button>
+                            <button bindtap="__e" data-event-opts="{{[ [ 'tap',[ ['start_task'] ] ] ]}}" type="primary" wx:else>
+                                <icon class="iconfont"></icon>
+                                <text>点击开始活动</text>
+                            </button>
+                        </block>
+                    </block>
+                </block>
+            </block>
+        </block>
+    </view>
+    <navigator class="fixBtn" openType="switchTab" style="bottom:140rpx;" url="/pages/my/task/task">
+        <icon class="iconfont" style="font-size:56rpx;"></icon>
+        <view>更多活动</view>
+    </navigator>
+    <button bindtap="__e" class="fixBtn" data-event-opts="{{[ [ 'tap',[ [ 'e0',['$event'] ] ] ] ]}}" style="bottom:280rpx;" wx:if="{{task.ename=='team_pk'}}">
+        <icon class="iconfont" style="font-size:56rpx;"></icon>
+        <view>团队成员</view>
+    </button>
+    <button class="fixBtn" openType="share" style="bottom:280rpx;" wx:else>
+        <icon class="iconfont" style="font-size:56rpx;"></icon>
+        <view>邀请好友</view>
+    </button>
+    <view class="member_lists" wx:if="{{show_member}}">
+        <icon class="iconfont" style="color:#FFFFFF;"></icon>
+        <view bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'goDetail',['$0'],[ [ ['lists','',index,'id'] ] ] ] ] ] ]}}" wx:for="{{lists}}" wx:key="index">{{''+item.title+''}}</view>
+    </view>
+</view>

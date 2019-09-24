@@ -1,0 +1,9 @@
+<view class="my-plan-style">
+    <view>
+        <swiper autoplay circular bindchange="__e" class="imageContainer" data-event-opts="{{[ [ 'change',[ [ 'handleChange',['$event'] ] ] ] ]}}" nextMargin="30rpx" previousMargin="30rpx">
+            <swiper-item class="swiperitem" wx:for="{{images}}" wx:key="index">
+                <image bindtap="__e" class="{{['itemImg',currentIndex==index?'swiperactive':'']}}" data-event-opts="{{[ [ 'tap',[ [ 'imageClick',['$0'],[ [ ['images','',index,'url'] ] ] ] ] ] ]}}" src="{{item.pic}}"></image>
+            </swiper-item>
+        </swiper>
+    </view>
+</view>

@@ -1,0 +1,22 @@
+<view class="my-detail">
+    <view class="my-detail-avatar">
+        <view class="my-detail-avatar-text">头像</view>
+        <image class="my-detail-avatar-content" src="{{userInfo.avatar}}"></image>
+    </view>
+    <view class="my-detail-nickname">
+        <view class="my-detail-nickname-text">昵称</view>
+        <view class="my-detail-nickname-content">{{userInfo.nickname}}</view>
+    </view>
+    <view class="my-detail-phone">
+        <view class="my-detail-phone-text">手机号码</view>
+        <view bindtap="__e" class="my-detail-phone-content" data-event-opts="{{[ [ 'tap',[ [ 'e0',['$event'] ] ] ] ]}}">{{(userInfo.phone_status==0?'未绑定':userInfo.phone)+''}}<text class="iconfont" style="font-size:27rpx;color:#666;" wx:if="{{userInfo.phone_status==0}}"></text>
+        </view>
+    </view>
+    <view bindtap="__e" class="my-detail-version" data-event-opts="{{[ [ 'tap',[ [ 'checkUpdate',['$event'] ] ] ] ]}}">
+        <view class="my-detail-version-text">当前版本</view>
+        <view class="my-detail-version-content">{{version}}</view>
+    </view>
+    <view style="margin-top:30rpx;padding:0 30rpx;">
+        <button bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'logout',['$event'] ] ] ] ]}}">退出登录</button>
+    </view>
+</view>

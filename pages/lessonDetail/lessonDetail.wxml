@@ -1,0 +1,50 @@
+<view class="lesson-detail" wx:if="{{details}}">
+    <view class="detail-banner">
+        <image src="{{details.data.image}}"></image>
+    </view>
+    <view class="detail-content">
+        <view class="detail-title">{{details.data.title}}</view>
+        <utag bind:__l="__l" circle="true" class="product-detail-tag" inverted="true" text="{{tag}}" type="default" vueId="{{'1-'+tagIndex}}" wx:for="{{details.data.label_name}}" wx:for-index="tagIndex" wx:for-item="tag" wx:key="tagIndex"></utag>
+        <view class="product-detail-price" hidden="{{!(platform!='ios'||!ischeck)}}">
+            <view class="product-detail-yuan">¥</view>
+            <view class="product-detail-num">{{''+details.data.price}}</view>
+            <view class="product-detail-price-earn">
+                <view class="product-detail-price-earn-text">赚</view>
+                <view class="product-detail-price-earn-num">{{details.data.earn}}</view>
+            </view>
+            <view class="detail-hasSale">{{'已售'+details.data.sales+'份'}}</view>
+        </view>
+        <canvas canvasId="myCanvas" class="myCanvas"></canvas>
+        <view class="qrimg">
+            <tki-qrcode bind:__l="__l" bind:result="__e" class="vue-ref" data-event-opts="{{[ [ '^result',[ ['qrR'] ] ] ]}}" data-ref="qrcode" loadMake="{{loadMake}}" lv="{{lv}}" onval="{{onval}}" size="{{qrwidth}}" unit="{{unit}}" val="{{qrurl}}" vueId="2"></tki-qrcode>
+        </view>
+        <view style="font-size:32rpx;color:#303133;font-weight:600;margin-top:40rpx;">推广素材</view>
+        <scroll-view scrollWithAnimation scrollX scrollLeft="{{0}}">
+            <view class="img-list">
+                <view class="img-list-item" wx:for="{{images}}" wx:key="index">
+                    <image mode="aspectFit" src="{{item.src}}"></image>
+                    <view bindtap="__e" class="{{[ 'select',[item.selected?'bg-red':''] ]}}" data-event-opts="{{[ [ 'tap',[ [ 'imgSelect',[index] ] ] ] ]}}"></view>
+                </view>
+            </view>
+        </scroll-view>
+        <view class="btn-showinfo">
+            <text>{{switchUserInfoText}}</text>
+            <switch bindchange="__e" checked="{{showUserInfo}}" color="#FF3938" data-event-opts="{{[ [ 'change',[ [ 'switchUserInfo',['$event'] ] ] ] ]}}" style="transform:scale(0.5);"></switch>
+        </view>
+        <view bindtap="__e" class="copy-area" data-event-opts="{{[ [ 'tap',[ [ 'copyinfo',[true] ] ] ] ]}}">
+            <view>{{shareinfo}}</view>
+            <view class="btn-copy">点击复制</view>
+        </view>
+        <view bindtap="__e" class="btn-save-all" data-event-opts="{{[ [ 'tap',[ [ 'saveImages',[true] ] ] ] ]}}">保存全部图片</view>
+        <view bindtap="__e" class="btn-save-select" data-event-opts="{{[ [ 'tap',[ [ 'saveImages',[false] ] ] ] ]}}">保存选中图片</view>
+        <view style="font-size:32rpx;color:#303133;font-weight:600;margin-top:40rpx;">图文详情</view>
+        <view class="detail-imgs" style="{{'height:'+detailImgsHeight+';'}}">
+            <rich-text nodes="{{description}}" style="line-height:30px;font-size:28rpx;letter-spacing:2px;"></rich-text>
+            <view bindtap="__e" class="detail-imgs-showall" data-event-opts="{{[ [ 'tap',[ [ 'detailShow',['$event'] ] ] ] ]}}">
+                <view>{{showAll?'收起图文详情':'展开图文详情'}}</view>
+                <view class="icon-down" wx:if="{{!showAll}}"></view>
+                <view class="icon-up" wx:else></view>
+            </view>
+        </view>
+    </view>
+</view>

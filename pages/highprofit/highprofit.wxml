@@ -1,0 +1,30 @@
+<view>
+    <image mode="widthFix" src="../../static/iconbanner.jpg" style="width:100%;"></image>
+    <view class="tab-view">
+        <navigator class="product-lists" hoverClass="none" url="{{'/pages/lessonDetail/lessonDetail?id='+item.id}}" wx:for="{{list}}" wx:key="id">
+            <view class="product-img">
+                <image src="{{item.share_img}}"></image>
+            </view>
+            <view class="product-detail">
+                <view class="product-detail-title">{{item.title}}</view>
+                <view>
+                    <uni-countdown bind:__l="__l" borderColor="#d0d0d0" color="#666666" day="{{item.days}}" hour="{{item.hour}}" minute="{{item.minute}}" second="{{item.second}}" vueId="{{'1-'+index}}"></uni-countdown>
+                </view>
+                <view class="product-detail-price" hidden="{{!(platform!='ios'||!ischeck)}}">
+                    <view class="product-detail-yuan">¥</view>
+                    <view class="product-detail-num">{{''+item.price}}</view>
+                    <view class="product-detail-price-earn">
+                        <view class="product-detail-price-earn-text">赚</view>
+                        <view class="product-detail-price-earn-num">{{item.make}}</view>
+                    </view>
+                </view>
+                <view class="product-detail-sale">{{'已售'+item.sales+'份'}}</view>
+                <view class="product-detail-recommend">推荐好课</view>
+            </view>
+        </navigator>
+        <view wx:if="{{list.length==0}}">
+            <image class="none-data-image" mode="widthFix" src="../../static/image/noclist.png"></image>
+            <view class="none-data-text">数据加载中...</view>
+        </view>
+    </view>
+</view>

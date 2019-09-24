@@ -1,0 +1,197 @@
+@charset "UTF-8";
+
+.flex {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    font-size: 30rpx;
+}
+
+page {
+    background: #fff;
+}
+
+.money {
+    height: 100rpx;
+    line-height: 100rpx;
+    font-size: 30rpx;
+    color: #333;
+    background-color: #fff;
+    border-bottom: 1rpx solid #f4f4f4;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 0 30rpx;
+}
+
+.cashxia {
+    font-size: 50rpx!important;
+    color: #b6b6b6;
+}
+
+.information {
+    width: 100%;
+    background-color: #fff;
+    display: block;
+    margin-top: 20rpx;
+}
+
+.information-li {
+    height: 100rpx;
+    padding: 0 30rpx;
+    line-height: 100rpx;
+    border-bottom: 1rpx solid #f7f7f7;
+}
+
+.jine {
+    width: 45rpx;
+    height: 45rpx;
+    vertical-align: middle;
+    margin-top: -3rpx;
+}
+
+.information-li label,.cashNum label {
+    text-align: right;
+    width: 250rpx;
+    display: inline-block;
+}
+
+.information-li radio-group label {
+    width: auto;
+}
+
+radio-group,.information-li input,.cashNum input {
+    width: 100%;
+    height: 100%;
+}
+
+.cash {
+    width: 100%;
+    height: 210rpx;
+    background-color: #fff;
+    margin-top: 20rpx;
+}
+
+.cashNum {
+    padding: 0 30rpx;
+    border-bottom: 1px solid #eaeaea;
+    color: #333;
+    height: 100rpx;
+    line-height: 100rpx;
+}
+
+.balance {
+    padding: 0 30rpx;
+    font-size: 24rpx;
+    color: #999;
+    height: 60rpx;
+    line-height: 59rpx;
+}
+
+.but {
+    width: 690rpx;
+    height: 90rpx;
+    line-height: 90rpx;
+    text-align: center;
+    background-color: #ff3d3d;
+    color: #fff;
+    font-size: 32rpx;
+    margin-top: 70rpx;
+}
+
+.header {
+    position: relative;
+    z-index: 99;
+}
+
+.cashdown {
+    background-color: #fff;
+    width: 100%;
+    position: absolute;
+    top: 100rpx;
+}
+
+.cashdown .cashdown-li {
+    height: 83rpx;
+    line-height: 83rpx;
+    border-top: 1rpx solid #f4f4f4;
+    padding: 0 30rpx;
+    color: #666;
+    position: relative;
+}
+
+.mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #000;
+    opacity: 0.6;
+}
+
+.card,.weixin {
+    color: #00a8ff;
+    font-size: 40rpx;
+    position: absolute;
+    top: 1rpx;
+}
+
+.cashdui {
+    color: #ff3d3d;
+    font-size: 36rpx;
+    float: right;
+}
+
+.weixin {
+    color: #3baf34;
+}
+
+.cash-text {
+    margin-left: 58rpx;
+}
+
+.Bank {
+    color: #808080;
+    display: inline-block;
+    width: 510rpx;
+}
+
+.bankxia {
+    float: right;
+    font-size: 45rpx;
+    color: #999;
+}
+
+.bankname {
+    width: 137rpx!important;
+}
+
+.moneyh {
+    height: 80rpx;
+    line-height: 80rpx;
+    padding-left: 50rpx;
+    font-size: 30rpx;
+}
+
+.getmoney {
+    width: 608rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    color: #fff;
+    margin: 84rpx auto 40rpx;
+    background: #FF3838;
+    box-shadow: 0 11rpx 27rpx 0 rgba(255,56,56,0.31);
+    border-radius: 44rpx;
+}
+
+.msg {
+    width: 80%;
+    margin: 20rpx auto;
+    padding-bottom: 20rpx;
+    color: #999;
+    font-size: 24rpx;
+    line-height: 44rpx;
+}

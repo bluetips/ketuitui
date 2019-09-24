@@ -1,0 +1,22 @@
+<view style="margin-top:20rpx;">
+    <uni-segmented-control activeColor="#ff393b" bind:__l="__l" bind:clickItem="__e" current="{{current}}" data-event-opts="{{[ [ '^clickItem',[ ['onClickItem'] ] ] ]}}" styleType="button" values="{{items}}" vueId="1"></uni-segmented-control>
+    <view class="content" style="margin-top:20rpx;">
+        <view wx:if="{{withDrawList}}">
+            <view class="withdraw-list" wx:for="{{withDrawList}}" wx:key="index">
+                <view class="list-text">
+                    <view class="text-type">{{'使用'+item.extract_type+'提现'+item.extract_price}}</view>
+                    <view class="text-status">{{item.status_text}}</view>
+                </view>
+                <view class="list-text">
+                    <view class="text-time">{{item.add_time}}</view>
+                    <view class="text-price" hidden="{{!(item.status_value!=-1)}}">{{'-'+item.extract_price}}</view>
+                </view>
+                <view class="list-text" style="color:#FF0000;font-size:24rpx;" wx:if="{{item.status_value==-1}}">{{'失败原因 : '+item.fail_msg+''}}</view>
+            </view>
+        </view>
+        <view wx:else>
+            <image class="none-data-image" mode="widthFix" src="../../static/image/noclist.png"></image>
+            <view class="none-data-text">暂无记录~</view>
+        </view>
+    </view>
+</view>

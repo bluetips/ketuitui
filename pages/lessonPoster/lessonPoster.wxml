@@ -1,0 +1,69 @@
+<view class="posterbox flex">
+    <view class="tabnav">
+        <view bindtap="__e" class="{{['posttitle',showtab==1?'active':'']}}" data-event-opts="{{[ [ 'tap',[ [ 'e0',['$event'] ] ] ] ]}}">专属海报</view>
+        <view bindtap="__e" class="{{['posttitle ',showtab==2?'active':'']}}" data-event-opts="{{[ [ 'tap',[ [ 'e1',['$event'] ] ] ] ]}}">更多推广方式</view>
+    </view>
+    <view class="tabcont" hidden="{{!(showtab==1)}}" style="text-align:center;">
+        <block wx:if="{{shareinfo}}">
+            <view class="savetitle">（分享时文案自动复制）</view>
+            <view bindtap="__e" class="shareinfo" data-event-opts="{{[ [ 'tap',[ [ 'copyinfo',[true] ] ] ] ]}}">
+                <view>{{shareinfo}}</view>
+                <button size="mini" type="primary">复制</button>
+            </view>
+        </block>
+        <view wx:if="{{showOption}}">
+            <switch bindchange="__e" checked="{{showUserInfo}}" color="#00A8FF" data-event-opts="{{[ [ 'change',[ [ 'switchUserInfo',['$event'] ] ] ] ]}}" style="transform:scale(0.7);"></switch>
+            <view style="font-size:24rpx;color:#007AFF;">{{switchUserInfoText}}</view>
+        </view>
+        <canvas canvasId="myCanvas" class="myCanvas"></canvas>
+        <image class="preimage" src="{{savedImgUrl}}" wx:if="{{savedImgUrl}}"></image>
+        <view class="qrimg">
+            <tki-qrcode bind:__l="__l" bind:result="__e" class="vue-ref" data-event-opts="{{[ [ '^result',[ ['qrR'] ] ] ]}}" data-ref="qrcode" loadMake="{{loadMake}}" lv="{{lv}}" onval="{{onval}}" size="{{qrwidth}}" unit="{{unit}}" val="{{qrurl}}" vueId="1"></tki-qrcode>
+        </view>
+        <view bindtap="__e" class="savepimage" data-event-opts="{{[ [ 'tap',[ [ 'saveImageToPhoto',['$event'] ] ] ] ]}}">一键保存</view>
+        <view bindtap="__e" class="mask" data-event-opts="{{[ [ 'tap',[ [ 'e2',['$event'] ] ] ] ]}}" wx:if="{{sharebox}}"></view>
+        <view class="sharebox" wx:if="{{sharebox}}">
+            <view class="sharetitle">
+                <text class="line"></text>
+                <text style="color:#999;">分享至</text>
+                <text class="line"></text>
+            </view>
+            <view class="sharecont">
+                <view bindtap="__e" class="itemcont" data-event-opts="{{[ [ 'tap',[ [ 'sharefriend',['$event'] ] ] ] ]}}">
+                    <image class="icont" src="../../static/image/wx.png"></image>
+                    <view class="sharename">微信好友</view>
+                </view>
+                <view bindtap="__e" class="itemcont" data-event-opts="{{[ [ 'tap',[ [ 'sharecircle',['$event'] ] ] ] ]}}">
+                    <image class="icont" src="../../static/image/fr.png"></image>
+                    <view class="sharename">朋友圈</view>
+                </view>
+                <view bindtap="__e" class="itemcont" data-event-opts="{{[ [ 'tap',[ [ 'saveImageToPhoto',['$event'] ] ] ] ]}}">
+                    <image class="icont" src="../../static/image/save.png"></image>
+                    <view class="sharename">保存图片</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="tabcont" hidden="{{!(showtab==2)}}">
+        <navigator hoverClass="none" url="{{hdUrl}}">
+            <view class="more-item">
+                <image mode class="moreicon" src="../../static/image/n3.png"></image>
+                <view class="morecont">
+                    <view class="moretitle">高清打印素材</view>
+                    <view class="conts">可以将高清海报等素材张贴在您的线下店</view>
+                </view>
+                <image mode class="rarrow" src="../../static/image/arr.png"></image>
+            </view>
+        </navigator>
+        <navigator bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'showTips',['$event'] ] ] ] ]}}" hoverClass="none">
+            <view class="more-item">
+                <image mode class="moreicon" src="../../static/image/n2.png"></image>
+                <view class="morecont">
+                    <view class="moretitle">媒体分享</view>
+                    <view class="conts">可以将文案和您的专属链接放到社交媒体或网站上</view>
+                </view>
+                <image mode class="rarrow" src="../../static/image/arr.png"></image>
+            </view>
+        </navigator>
+    </view>
+</view>

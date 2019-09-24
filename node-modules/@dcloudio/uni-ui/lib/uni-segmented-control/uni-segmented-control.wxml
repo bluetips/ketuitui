@@ -1,0 +1,3 @@
+<view class="{{['segmented-control',styleType==='text'?'text':'']}}" style="{{'border-color:'+(styleType==='text'?'':activeColor)+';'}}">
+    <view bindtap="__e" class="{{[ 'segmented-control-item',[styleType==='text'?'text':''],[index===currentIndex?'active':''] ]}}" data-event-opts="{{[ [ 'tap',[ [ '_onClick',[index] ] ] ] ]}}" style="{{'color:'+(index===currentIndex?styleType==='text'?activeColor:'#fff':styleType==='text'?'#000':activeColor)+';'+'background-color:'+(index===currentIndex&&styleType==='button'?activeColor:'')+';'}}" wx:for="{{values}}" wx:key="index">{{''+item+''}}</view>
+</view>

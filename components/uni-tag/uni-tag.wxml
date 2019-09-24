@@ -1,0 +1,1 @@
+<view bindtap="__e" class="{{['uni-tag self-tag-style',disabled===true||disabled==='true'?'uni-tag--disabled':'',inverted===true||inverted==='true'?'uni-tag--inverted':'',circle===true||circle==='true'?'uni-tag--circle':'','uni-tag--'+size,'uni-tag--'+type]}}" data-event-opts="{{[ [ 'tap',[ ['onClick'] ] ] ]}}" wx:if="{{text}}">{{text}}</view>

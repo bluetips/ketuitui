@@ -1,0 +1,74 @@
+<view class="earn-detail" wx:if="{{detailData}}">
+    <view class="detail-data">
+        <view class="detail-content1">
+            <image class="detail-content1-image" src="{{detailData.image}}"></image>
+            <view class="detail-content1-text">
+                <view class="detail-content1-text-title">{{detailData.store_name}}</view>
+                <view class="detail-content1-text-status" style="{{'color:'+( detailData.status==-1?'#999':color[detailData.status] )+';'}}">{{statusText}}</view>
+            </view>
+        </view>
+        <view class="detail-content2" hidden="{{!(detailData.status!==-1)}}">
+            <view class="detail-content2-progress" style="{{'background:'+(detailData.status==0?'#ebebeb':'')+';'}}">
+                <image class="green-icon1" src="../../../static/image/gouactive.png"></image>
+                <image class="green-icon2" hidden="{{!(detailData.status==0)}}" src="../../../static/image/gougrey.png"></image>
+                <image class="green-icon2" hidden="{{!(detailData.status==1)}}" src="../../../static/image/gouactive.png"></image>
+                <view class="progress-text1">结算中</view>
+                <view class="progress-text2">已到账</view>
+            </view>
+        </view>
+        <view class="invalid" hidden="{{!(detailData.status==-1)}}">此订单收益无效</view>
+        <view class="detail-content3">
+            <view class="detail-content3-text">
+                <view>消费金额</view>
+                <view>{{'¥'+detailData.pay_price}}</view>
+            </view>
+            <view class="detail-content3-text">
+                <view>佣金类型</view>
+                <view wx:if="{{detailData.type=='brokerage'}}">一级佣金</view>
+                <block wx:else>
+                    <view wx:if="{{detailData.type=='brokerage_second'}}">二级佣金</view>
+                    <block wx:else>
+                        <view wx:if="{{detailData.type=='brokerage_third'}}">团队管理佣金</view>
+                        <block wx:else>
+                            <view wx:if="{{detailData.type=='brokerage_fanli'}}">团队佣金返现</view>
+                        </block>
+                    </block>
+                </block>
+            </view>
+            <view class="detail-content3-text">
+                <view>佣金</view>
+                <view>{{'¥'+detailData.number}}</view>
+            </view>
+            <view class="detail-content3-text" wx:if="{{detailData.business_number>0}}">
+                <view>转正后补发佣金</view>
+                <view>{{'¥'+detailData.business_number}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="tips" wx:if="{{detailData.type=='brokerage'&&(detailData.subscribe==0||!detailData.subscribe_time)}}">
+        <view>该粉丝购买课程后，没有关注“小舵手学堂”公众号，以致无法接收到“拼团进度”、“上课提醒”、“优质课程推荐”等信息。</view>
+        <view style="margin-top:10px;color:#007AFF;">提示：提醒粉丝关注“小舵手学堂”公众号，有助于提升粉丝复购率。</view>
+    </view>
+    <view class="order">
+        <view class="order-data">
+            <view style="padding:10rpx 0;">粉丝昵称:</view>
+            <view style="padding:10rpx 0;position:relative;">{{detailData.order_name+''}}<view bindtap="__e" class="copy-btn" data-event-opts="{{[ [ 'tap',[ [ 'copy',['$0'],['detailData.order_name'] ] ] ] ]}}">复制昵称</view>
+            </view>
+        </view>
+        <view class="order-data">
+            <view style="padding:10rpx 0;">订单编号:</view>
+            <view style="padding:10rpx 0;position:relative;">{{detailData.order_id+''}}<view bindtap="__e" class="copy-btn" data-event-opts="{{[ [ 'tap',[ [ 'copy',['$0'],['detailData.order_id'] ] ] ] ]}}">复制订单号</view>
+            </view>
+        </view>
+        <view style="text-align:center;margin:40rpx 0 10rpx;" wx:if="{{detailData.type=='brokerage'}}">
+            <button bindtap="__e" data-event-opts="{{[ [ 'tap',[ [ 'viewUser',['$event'] ] ] ] ]}}" size="mini" type="primary">查看该粉丝消费记录</button>
+        </view>
+    </view>
+    <view class="detail-rule">
+        <view>
+            <image class="coin-icon" src="/static/earn.png"></image>
+            <view class="detail-rule-title">佣金说明</view>
+        </view>
+        <text class="detail-rule-text">由于平台会有打折，限时特价等活动，实际返佣金额，按用户实际消费的金额乘上对应的返佣比例。</text>
+    </view>
+</view>

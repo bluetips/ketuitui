@@ -1,0 +1,125 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family:'iconfont';src:url("https://at.alicdn.com/t/font_1293779_ruo0kg6q69.eot");src:url("https://at.alicdn.com/t/font_1293779_ruo0kg6q69.eot?#iefix") format("embedded-opentype"),url("https://at.alicdn.com/t/font_1293779_ruo0kg6q69.woff2") format("woff2"),url("https://at.alicdn.com/t/font_1293779_ruo0kg6q69.woff") format("woff"),url("https://at.alicdn.com/t/font_1293779_ruo0kg6q69.ttf") format("truetype"),url("https://at.alicdn.com/t/font_1293779_ruo0kg6q69.svg#iconfont") format("svg");
+}
+
+.iconfont {
+    font-family: "iconfont"!important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.tips {
+    font-size: 28rpx;
+    color: #ff0000;
+    margin: 30rpx 15rpx;
+    padding: 30rpx;
+    border-radius: 10rpx;
+    border: 1rpx solid #c9c86e;
+    background: #fff9ea;
+}
+
+.c_red {
+    color: #ff0000;
+}
+
+.placeholder {
+    color: #b0b0b0;
+    font-weight: normal;
+}
+
+.fixBtn {
+    text-align: center;
+    position: fixed;
+    z-index: 999;
+    right: 30rpx;
+    bottom: 60rpx;
+    color: #FF9999;
+    border: 2rpx solid #FFCCCC;
+    padding: 8rpx;
+    border-radius: 6rpx;
+    background-color: #ffffff;
+    line-height: normal;
+    font-size: inherit;
+}
+
+.fixBtn .iconfont {
+    font-size: 100rpx;
+}
+
+.fixBtn view {
+    font-size: 20rpx;
+}
+
+.fixBtn::after {
+    content: none;
+}
+
+.searchBar {
+    margin: 16rpx;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.searchBar input {
+    border: 2rpx solid #FF9999;
+    border-radius: 8rpx;
+    font-size: 28rpx;
+    line-height: 50rpx;
+    padding: 4rpx 8rpx;
+    -webkit-box-flex: 1;
+    flex: 1;
+    text-align: left;
+}
+
+.searchBar button {
+    width: 160rpx;
+    margin-left: 10rpx;
+}
+
+.searchBar button.empty {
+    width: 140rpx;
+}
+
+.topsearch {
+    height: 70rpx;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 80rpx;
+    padding-left: 20rpx;
+}
+
+.topsearch image {
+    width: 110rpx;
+}
+
+.topsearch .input {
+    position: relative;
+}
+
+.topsearch .input icon {
+    position: absolute;
+    left: 18rpx;
+    top: -16rpx;
+    padding: 0;
+    margin: 0;
+}
+
+.topsearch .input input {
+    border-radius: 30rpx;
+    margin: 0 0 0 10rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    background-color: #e0e0e0;
+    font-size: 24rpx;
+    text-align: left;
+    padding: 0 0 0 45rpx;
+}

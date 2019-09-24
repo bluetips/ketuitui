@@ -1,0 +1,5 @@
+<scroll-view scrollWithAnimation scrollX class="{{[fixed?'fix-top':'']}}" scrollLeft="{{scrollx}}">
+    <view class="list" style="{{'height:'+height+'px'+';'+'line-height:'+height+'px'+';'+'color:'+color+';'+'font-size:'+fontSize+'px'+';'}}">
+        <view bindtap="__e" class="{{[ [current==index?'active':''],'items-'+index ]}}" data-event-opts="{{[ [ 'tap',[ [ 'onClick',[index] ] ] ] ]}}" wx:for="{{items}}" wx:key="index">{{item.label_name}}</view>
+    </view>
+</scroll-view>

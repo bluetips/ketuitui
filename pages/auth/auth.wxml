@@ -1,0 +1,4 @@
+<view class="logopage">
+    <image class="logo" src="../../static/image/newlogo.png"></image>
+    <button bindgetuserinfo="__e" class="login-btn" data-event-opts="{{[ [ 'getuserinfo',[ [ 'getUserInfo',['$event'] ] ] ] ]}}" lang="zh_CN" openType="getUserInfo" type="primary" withCredentials="true">授权登录</button>
+</view>

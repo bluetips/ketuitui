@@ -1,0 +1,4 @@
+<view class="_qrCode">
+    <canvas canvasId="_myQrCodeCanvas" class="_qrCodeCanvas" id="_myQrCodeCanvas" style="{{'width:'+cpSize+'px'+';'+'height:'+cpSize+'px'+';'}}"></canvas>
+    <image hidden="{{!show}}" src="{{result}}" style="{{'width:'+cpSize+'px'+';'+'height:'+cpSize+'px'+';'}}"></image>
+</view>
